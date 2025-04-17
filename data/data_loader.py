@@ -1,0 +1,30 @@
+import traci
+import Config
+
+# Start SUMO with a configuration file
+sumo_cmd = ['sumo', '-c', 'Config/sumo_config.sumocfg']
+traci.start(sumo_cmd)
+
+try:
+    step = 0
+    while step < 100:  # Run simulation for 100 steps (or your desired number)
+        traci.simulationStep()  # Advance the simulation by one step
+
+        # Get the list of all edges in the network
+        edges = traci.edge.getIDList()
+
+        # Collect traffic levels (number of vehicles) for each edge
+        traffic_levels = {}
+        for edge_id in edges:
+            vehicle_count = traci.edge.getLastStepVehicleNumber(edge_id)  # Get the number of vehicles on the edge
+            traffic_levels[edge_id] = vehicle_count
+
+        # Print or process the traffic levels
+        print(f"Step {step}: Traffic levels: {traffic_levels}")
+
+        # Increment simulation step
+        step += 1
+
+finally:
+    # Close the connection to SUMO
+ traci.close()
