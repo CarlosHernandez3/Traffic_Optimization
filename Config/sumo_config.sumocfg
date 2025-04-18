@@ -1,6 +1,6 @@
 <configuration>
 <input>
-<net-file value="network_config.xml" />
+<net-file value="network.net.xml" />
 <route-files value="routes.rou.xml" />
 </input>
 </configuration>

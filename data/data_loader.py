@@ -1,8 +1,13 @@
 import traci
-import Config
+# import Config
+from pathlib import Path 
 
 # Start SUMO with a configuration file
-sumo_cmd = ['sumo', '-c', 'Config/sumo_config.sumocfg']
+
+sumo_config_path = Path(__file__).resolve().parent.parent / "Config" / "sumo_config.sumocfg"
+sumo_cmd = ["sumo", "-c", str(sumo_config_path)]
+
+# sumo_cmd = ['sumo', '-c', 'Config/sumo_config.sumocfg']
 traci.start(sumo_cmd)
 
 try:
