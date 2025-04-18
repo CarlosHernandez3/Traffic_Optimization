@@ -1,1 +1,121 @@
-<routes><vType id="car" accel="1.0" decel="5.0" maxSpeed="40" length="5" /><route id="route1" edges="1to2 2to5 5to6" /><vehicle id="vehicle0" type="car" route="route1" depart="0" /></routes>
+<routes>
+    <vType id="car" accel="5.0" decel="8.0" maxSpeed="40" length="5" />
+
+    <!-- Define routes -->
+    <route id="route1" edges="1to2 2to5 5to6" />
+    <route id="route2" edges="6to5 5to4 4to3" />
+    <route id="route3" edges="3to2 2to1 1to6" />
+    <route id="route4" edges="1to6 6to5" />
+    <route id="route5" edges="2to3 3to4 4to5" />
+
+    <!-- Vehicles for route1 -->
+    <vehicle id="vehicle0" type="car" route="route1" depart="1" />
+    <vehicle id="vehicle1" type="car" route="route1" depart="1" />
+    <vehicle id="vehicle2" type="car" route="route1" depart="1" />
+    <vehicle id="vehicle3" type="car" route="route1" depart="1" />
+    <vehicle id="vehicle4" type="car" route="route1" depart="1" />
+    <vehicle id="vehicle5" type="car" route="route1" depart="1" />
+    <vehicle id="vehicle6" type="car" route="route1" depart="1" />
+    <vehicle id="vehicle7" type="car" route="route1" depart="1" />
+    <vehicle id="vehicle8" type="car" route="route1" depart="1" />
+    <vehicle id="vehicle9" type="car" route="route1" depart="1" />
+    <vehicle id="vehicle10" type="car" route="route1" depart="1" />
+
+    <!-- Vehicles for route2 -->
+    <vehicle id="vehicle11" type="car" route="route2" depart="1" />
+    <vehicle id="vehicle12" type="car" route="route2" depart="1" />
+    <vehicle id="vehicle13" type="car" route="route2" depart="1" />
+    <vehicle id="vehicle14" type="car" route="route2" depart="1" />
+    <vehicle id="vehicle15" type="car" route="route2" depart="1" />
+    <vehicle id="vehicle16" type="car" route="route2" depart="1" />
+    <vehicle id="vehicle17" type="car" route="route2" depart="1" />
+    <vehicle id="vehicle18" type="car" route="route2" depart="1" />
+    <vehicle id="vehicle19" type="car" route="route2" depart="1" />
+    <vehicle id="vehicle20" type="car" route="route2" depart="1" />
+    <vehicle id="vehicle21" type="car" route="route2" depart="1" />
+    <vehicle id="vehicle22" type="car" route="route2" depart="1" />
+    <vehicle id="vehicle23" type="car" route="route2" depart="1" />
+
+    <!-- Vehicles for route3 -->
+    <vehicle id="vehicle24" type="car" route="route3" depart="1" />
+    <vehicle id="vehicle25" type="car" route="route3" depart="1" />
+    <vehicle id="vehicle26" type="car" route="route3" depart="1" />
+    <vehicle id="vehicle27" type="car" route="route3" depart="1" />
+    <vehicle id="vehicle28" type="car" route="route3" depart="1" />
+    <vehicle id="vehicle29" type="car" route="route3" depart="1" />
+    <vehicle id="vehicle30" type="car" route="route3" depart="1" />
+    <vehicle id="vehicle31" type="car" route="route3" depart="1" />
+    <vehicle id="vehicle32" type="car" route="route3" depart="1" />
+    <vehicle id="vehicle33" type="car" route="route3" depart="1" />
+    <vehicle id="vehicle34" type="car" route="route3" depart="1" />
+    <vehicle id="vehicle35" type="car" route="route3" depart="1" />
+
+    <!-- Vehicles for route4 -->
+    <vehicle id="vehicle36" type="car" route="route4" depart="1" />
+    <vehicle id="vehicle37" type="car" route="route4" depart="1" />
+    <vehicle id="vehicle38" type="car" route="route4" depart="1" />
+    <vehicle id="vehicle39" type="car" route="route4" depart="1" />
+    <vehicle id="vehicle40" type="car" route="route4" depart="1" />
+    <vehicle id="vehicle41" type="car" route="route4" depart="1" />
+    <vehicle id="vehicle42" type="car" route="route4" depart="1" />
+    <vehicle id="vehicle43" type="car" route="route4" depart="1" />
+    <vehicle id="vehicle44" type="car" route="route4" depart="1" />
+    <vehicle id="vehicle45" type="car" route="route4" depart="1" />
+    <vehicle id="vehicle46" type="car" route="route4" depart="1" />
+    <vehicle id="vehicle47" type="car" route="route4" depart="1" />
+    <vehicle id="vehicle48" type="car" route="route4" depart="1" />
+    <vehicle id="vehicle49" type="car" route="route4" depart="1" />
+
+    <!-- Vehicles for route5 -->
+    <vehicle id="vehicle50" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle51" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle52" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle53" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle54" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle55" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle56" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle57" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle58" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle59" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle60" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle61" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle62" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle63" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle64" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle65" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle66" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle67" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle68" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle69" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle70" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle71" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle72" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle73" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle74" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle75" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle76" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle77" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle78" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle79" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle80" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle81" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle82" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle83" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle84" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle85" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle86" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle87" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle88" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle89" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle90" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle91" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle92" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle93" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle94" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle95" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle96" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle97" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle98" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle99" type="car" route="route5" depart="1" />
+    <vehicle id="vehicle100" type="car" route="route5" depart="1" />
+</routes>
