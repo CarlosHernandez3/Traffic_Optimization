@@ -26,14 +26,19 @@ This project demonstrates how to optimize traffic light configurations in a simu
   - **Net file**: Defines the road network.
   - **Routes file**: Specifies vehicle routes.
   - **Config file**: Links the above files for the simulation.
+  - **Edges file**: Specifies roads in network
+  - **Node file**: Specifies intersections in road network
 - Example files:
   - `network.net.xml`
   - `routes.rou.xml`
   - `config.sumocfg`
+  - `edges.xml`
+  - `nodes.xml`
 
 ### **3. Generate Simulated Traffic Data**
 1. Run SUMO to simulate traffic scenarios:
    ```bash
+   sumo-gui -n ./Config/network.net.xml
    sumo -c config.sumocfg
    ```
 2. Extract traffic metrics such as vehicle counts, queue lengths, and speeds using the TraCI Python API:
@@ -58,15 +63,7 @@ This project demonstrates how to optimize traffic light configurations in a simu
   - **Output**: Predicted traffic light configurations.
 - Train the model:
   ```python
-  model = GVAE(feature_size=feature_size)
-  optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
-
-  for epoch in range(num_epochs):
-      triu_logits, node_logits, mu, logvar = model(x, edge_attr, edge_index, batch_index)
-      loss = compute_loss(triu_logits, node_logits, labels)
-      optimizer.zero_grad()
-      loss.backward()
-      optimizer.step()
+  
   ```
 
 ### **6. Evaluate the GNN**
@@ -78,7 +75,6 @@ This project demonstrates how to optimize traffic light configurations in a simu
 ### **7. Deployment**
 - Integrate the GNN predictions into SUMO using TraCI for real-time traffic light control.
   ```python
-  traci.trafficlight.setPhase("junction_id", new_phase)
   ```
 
 ---
@@ -88,26 +84,24 @@ This project demonstrates how to optimize traffic light configurations in a simu
 |-- src/
     |-- gnn.py       # GNN implementation
     |-- train.py       # Training script
-    |-- simulate_sumo.py   # SUMO simulation scripts
+    |-- xmlConverter.py   # SUMO simulation scripts
 |-- data/
     |-- network.net.xml    # Traffic network file
     |-- routes.rou.xml     # Routes file
     |-- config.sumocfg     # SUMO config file
+    |-- edges.xml          # Edges config file
+    |-- nodes.xml          # Nodes config file
+
 |-- results/
     |-- logs/              # Training logs
     |-- models/            # Saved GNN models
 ```
 
----
-
-## **Future Work**
-- Expand the traffic network to include more intersections and roads.
-- Integrate live traffic data for real-world deployment.
-- Explore advanced GNN architectures for improved performance.
 
 ---
 
 ## **References**
 - [SUMO Documentation](https://sumo.dlr.de/docs/index.html)
 - [PyTorch Geometric Documentation](https://pytorch-geometric.readthedocs.io/en/latest/)
+- [xml.etree Documentation](https://docs.python.org/3/library/xml.etree.elementtree.html)
 

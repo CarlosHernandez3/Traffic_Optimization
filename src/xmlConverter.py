@@ -135,3 +135,7 @@ if __name__ == "__main__":
         print("Node features shape:", data.x.shape)
         print("Edge index shape:", data.edge_index.shape)
         print("Edge attributes shape:", data.edge_attr.shape)
+
+
+
+torch.save(data, "../data/data.pt")

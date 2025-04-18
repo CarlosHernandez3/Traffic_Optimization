@@ -24,5 +24,6 @@ input_dim = 4
 hidden_dim = 8
 output_dim = 2
 
-model = GNN(input_dim, hidden_dim, output_dim)
+# model = GNN(input_dim, hidden_dim, output_dim)
 
+print(data_object)
