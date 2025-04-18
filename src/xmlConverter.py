@@ -1,3 +1,74 @@
+import torch
+import xml.etree.ElementTree as ET
+from torch_geometric.data import Data
+import os
+
+def convert_sumo_to_pyg(edges_xml, nodes_xml):
+    # Parse XML
+    edges_root = ET.fromstring(edges_xml)
+    nodes_root = ET.fromstring(nodes_xml)
+
+    # Create a mapping from node id to index (0-based)
+    node_map = {}
+    for i, node in enumerate(nodes_root.findall('node')):
+        node_map[node.get('id')] = i
+
+    # Extract node features: x and y coordinates
+    num_nodes = len(node_map)
+    node_features = torch.zeros((num_nodes, 2))  # [x, y] coordinates as features
+    for node in nodes_root.findall('node'):
+        idx = node_map[node.get('id')]
+        x = float(node.get('x'))
+        y = float(node.get('y'))
+        node_features[idx] = torch.tensor([x, y])
+
+    # Extract edge indices and edge features
+    edge_indices = []
+    edge_attrs = []
+
+    for edge in edges_root.findall('edge'):
+        from_node = edge.get('from')
+        to_node = edge.get('to')
+        from_idx = node_map[from_node]
+        to_idx = node_map[to_node]
+
+        # Add edge to edge_index
+        edge_indices.append([from_idx, to_idx])
+
+        # Extract edge attributes (priority, numLanes, speed)
+        priority = int(edge.get('priority'))
+        num_lanes = int(edge.get('numLanes'))
+        speed = float(edge.get('speed'))
+
+        edge_attrs.append([priority, num_lanes, speed])
+
+    # Convert to PyTorch tensors
+    edge_index = torch.tensor(edge_indices).t().contiguous()
+    edge_attr = torch.tensor(edge_attrs, dtype=torch.float)
+
+    # Create PyTorch Geometric Data object
+    data = Data(
+        x=node_features,
+        edge_index=edge_index,
+        edge_attr=edge_attr,
+        num_nodes=num_nodes
+    )
+
+    return data
+
+
+def load_and_convert_sumo_files(edges_file_path, nodes_file_path):
+
+    with open(edges_file_path, 'r') as f:
+        edges_xml = f.read()
+
+    with open(nodes_file_path, 'r') as f:
+        nodes_xml = f.read()
+
+    return convert_sumo_to_pyg(edges_xml, nodes_xml)
+
+
+def load_from_config_dir(edges_filename, nodes_filename):
 
     current_dir = os.path.dirname(os.path.abspath(__file__))
 
