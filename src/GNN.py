@@ -5,6 +5,7 @@ from torch_geometric import data
 import torch.nn.functional as F
 from torch_geometric.nn import GCNConv
 
+data_object = torch.load("../data/data.pt")
 
 class GNN(nn.Module):
     def __init__(self, input_dim, hidden_dim, output_dim):
