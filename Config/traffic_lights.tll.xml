@@ -1,0 +1,31 @@
+<additional>
+    <tlLogic id="1" type="static" programID="default" offset="0">
+        <phase duration="30" state="GGGG"/>
+        <phase duration="5"  state="yyyy"/>
+        <phase duration="5"  state="rrrr"/>
+    </tlLogic>
+
+    <tlLogic id="2" type="static" programID="default" offset="0">
+        <phase duration="30" state="GGGG"/>
+        <phase duration="5"  state="yyyy"/>
+        <phase duration="5"  state="rrrr"/>
+    </tlLogic>
+
+    <tlLogic id="3" type="static" programID="default" offset="0">
+        <phase duration="30" state="GGGG"/>
+        <phase duration="5"  state="yyyy"/>
+        <phase duration="5"  state="rrrr"/>
+    </tlLogic>
+
+    <tlLogic id="4" type="static" programID="default" offset="0">
+        <phase duration="30" state="GGGG"/>
+        <phase duration="5"  state="yyyy"/>
+        <phase duration="5"  state="rrrr"/>
+    </tlLogic>
+
+    <tlLogic id="5" type="static" programID="default" offset="0">
+        <phase duration="30" state="GGGG"/>
+        <phase duration="5"  state="yyyy"/>
+        <phase duration="5"  state="rrrr"/>
+    </tlLogic>
+</additional>

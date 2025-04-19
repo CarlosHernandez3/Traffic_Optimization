@@ -98,36 +98,36 @@ if __name__ == "__main__":
 
     except FileNotFoundError as e:
         print(f"Error: {e}")
-        print("Using stored data instead...")
+        print("Loading Data...")
 
         edges_xml = """<edges>
-        <edge id="3to4" from="3" to="4" priority="5" numLanes="4" speed="40" />
-        <edge id="4to3" from="4" to="3" priority="5" numLanes="4" speed="40" />
-         
-        <edge id="1to6" from="1" to="6" priority="4" numLanes="2" speed="40" />
-        <edge id="6to1" from="6" to="1" priority="4" numLanes="2" speed="40" />
-       
-        <edge id="2to5" from="2" to="5" priority="3" numLanes="2" speed="40" />
-        <edge id="5to2" from="5" to="2" priority="3" numLanes="2" speed="40" />
+        <edge id="1to2" from="1" to="2" priority="2" numLanes="4" speed="17.9" />
+        <edge id="2to1" from="2" to="1" priority="2" numLanes="4" speed="17.9" />
 
-        <edge id="1to2" from="1" to="2" priority="2" numLanes="3" speed="40" />
-        <edge id="2to1" from="2" to="1" priority="2" numLanes="3" speed="40" />
-        <edge id="2to3" from="2" to="3" priority="2" numLanes="3" speed="40" />
-        <edge id="3to2" from="3" to="2" priority="2" numLanes="3" speed="45" />
-        <edge id="4to5" from="4" to="5" priority="1" numLanes="2" speed="45" />
-        <edge id="5to4" from="5" to="4" priority="1" numLanes="2" speed="35" />
-        <edge id="5to6" from="5" to="6" priority="1" numLanes="2" speed="30" />
-        <edge id="6to5" from="6" to="5" priority="1" numLanes="2" speed="30" />
-            </edges>"""
+        <edge id="2to3" from="2" to="3" priority="2" numLanes="4" speed="17.9" />
+        <edge id="3to2" from="3" to="2" priority="2" numLanes="4" speed="17.9" />
+
+        <edge id="3to4" from="3" to="4" priority="5" numLanes="4" speed="17.9" />
+        <edge id="4to3" from="4" to="3" priority="5" numLanes="4" speed="17.9" />
+
+        <edge id="4to1" from="4" to="1" priority="3" numLanes="4" speed="17.9" />
+        <edge id="1to4" from="1" to="4" priority="4" numLanes="4" speed="17.9" />
+
+        <edge id="4to5" from="4" to="5" priority="4" numLanes="4" speed="17.9" />
+        <edge id="5to4" from="5" to="4" priority="4" numLanes="4" speed="17.9" />
+
+        <edge id="3to5" from="3" to="5" priority="3" numLanes="4" speed="17.9" />
+        <edge id="5to3" from="5" to="3" priority="3" numLanes="4" speed="17.9" />
+        </edges>"""
 
         nodes_xml = """<nodes>
-        <node id="1" x="0.0" y="200.0" type="priority" />
-        <node id="2" x="0.0" y="100.0" type="priority" />
-        <node id="3" x="100.0" y="200.0" type="priority" />
-        <node id="4" x="200.0" y="200.0" type="priority" />
-        <node id="5" x="200.0" y="100.0" type="priority" />
-        <node id="6" x="200.0" y="0.0" type="priority" />
-            </nodes>"""
+    <node id="1" x="0.00" y="100.00" type="traffic_light"/>
+    <node id="2" x="0.00" y="0.00" type="traffic_light"/>
+    <node id="3" x="100.00" y="100.00" type="traffic_light"/>
+    <node id="4" x="200.00" y="100.00" type="traffic_light"/>
+    <node id="5" x="200.00" y="0.00" type="traffic_light"/>
+</nodes>
+"""
 
         data = convert_sumo_to_pyg(edges_xml, nodes_xml)
 

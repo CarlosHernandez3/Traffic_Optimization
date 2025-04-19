@@ -12,7 +12,7 @@ traci.start(sumo_cmd)
 
 try:
     step = 0
-    while step < 80:  # Run simulation for 80 steps
+    while step < 200:  # Run simulation for 80 steps
         traci.simulationStep()  # Advance the simulation by one step
 
         # Get the list of all edges in the network
