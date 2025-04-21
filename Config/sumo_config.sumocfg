@@ -3,4 +3,8 @@
 <net-file value="new_network.net.xml" />
 <route-files value="routes.rou.xml" />
 </input>
+<time>
+    <begin value="0"/>
+    <end value="200"/> <!-- Ensure this is set -->
+</time>
 </configuration>
