@@ -11,7 +11,6 @@ class GNN(nn.Module):
         super(GNN, self).__init__()
         self.conv1 = GCNConv(input_dim, hidden_dim)
         self.conv2 = GCNConv(hidden_dim, hidden_dim)
-
         self.duration_head = nn.Linear(hidden_dim, output_dim_duration)
         self.phase_head = nn.Linear(hidden_dim, output_dim_phase)
 
@@ -21,7 +20,6 @@ class GNN(nn.Module):
         x = self.conv2(x, edge_index)
         x = F.relu(x)
 
-        duration_out = F.relu(self.duration_head(x))
-        phase_out = torch.argmax(self.phase_head(x), dim=1)
-
-        return duration_out, phase_out
+        duration_output = self.duration_head(x)
+        phase_output = self.phase_head(x)
+        return duration_output, phase_output
