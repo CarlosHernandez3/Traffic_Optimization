@@ -36,14 +36,14 @@ hidden_dim = 8
 output_dim_duration = 1
 output_dim_phase = 3
 model = GNN(input_dim, hidden_dim, output_dim_duration, output_dim_phase)
-optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+optimizer = torch.optim.Adam(model.parameters(), lr=0.02)
 
 try:
     vehicle_trip_times = {}
     completed_trip_times = [] 
 
 
-    for step in range(200):
+    for step in range(800):
         traci.simulationStep()
 
         tls_ids = traci.trafficlight.getIDList()
@@ -81,13 +81,6 @@ try:
             duration_output = torch.relu(duration_output).squeeze()
             phase_output = torch.argmax(phase_output_raw, dim=1)
 
-            for i, tls_id in enumerate(tls_ids):
-                max_phase = len(traci.trafficlight.getCompleteRedYellowGreenDefinition(tls_id)[0].phases) - 1
-                phase = min(max_phase, int(phase_output[i].item()))
-                duration = max(5.0, min(60.0, float(duration_output[i].item())))
-
-                traci.trafficlight.setPhase(tls_id, phase)
-                traci.trafficlight.setPhaseDuration(tls_id, duration)
 
             optimizer.zero_grad()
             loss = torch.tensor(0.0, requires_grad=True)
@@ -99,6 +92,14 @@ try:
             loss.backward()
             optimizer.step()
 
+            for i, tls_id in enumerate(tls_ids):
+                max_phase = len(traci.trafficlight.getCompleteRedYellowGreenDefinition(tls_id)[0].phases) - 1
+                phase = min(max_phase, int(phase_output[i].item()))
+                duration = max(5.0, min(60.0, float(duration_output[i].item())))
+
+                if step % 100 == 0:
+                    traci.trafficlight.setPhase(tls_id, phase)
+                    traci.trafficlight.setPhaseDuration(tls_id, duration)
 
             print(f"Step {step}: Loss: {loss.item():.4f}")
             print(f"Phase Output: {phase_output.tolist()}")

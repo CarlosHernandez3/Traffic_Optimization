@@ -13,7 +13,7 @@ try:
     vehicle_trip_times = {}
     completed_trip_times = [] 
 
-    while step < 200:  
+    while step < 800:
         traci.simulationStep()
         vehicle_ids = traci.vehicle.getIDList()
         print(f"Vehicles at step {step}: {vehicle_ids}")
@@ -53,8 +53,6 @@ try:
         if completed_trip_times:
             avg_sum_time = sum(completed_trip_times)/len(completed_trip_times)
             print(f"Average trip time: {avg_sum_time:.2f} seconds")
-        print(f"Step {step}: Traffic levels: {traffic_levels}")
-        print(f"Step {step}: Waiting Times per junction: {junction_waiting_time}")
 
         step += 1
 
