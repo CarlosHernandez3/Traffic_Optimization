@@ -36,9 +36,9 @@ traci.start(sumo_cmd)
 
 input_dim = 4
 hidden_dim = 8
-output_dim = 1
-
-model = GNN(input_dim, hidden_dim, output_dim)
+output_dim_duration = 1
+output_dim_phase = 3
+model = GNN(input_dim, hidden_dim, output_dim_duration,output_dim_phase)
 
 try:
     step = 0
