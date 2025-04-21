@@ -39,12 +39,28 @@ model = GNN(input_dim, hidden_dim, output_dim_duration, output_dim_phase)
 optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
 
 try:
+    vehicle_trip_times = {}
+    completed_trip_times = [] 
+
+
     for step in range(200):
         traci.simulationStep()
 
         tls_ids = traci.trafficlight.getIDList()
         junction_waiting_time = {tls_id: 0.0 for tls_id in tls_ids}
         traffic_levels = {tls_id: 0 for tls_id in tls_ids}
+
+
+        departed_vehicles = traci.simulation.getDepartedIDList()
+        for veh_id in departed_vehicles:
+            vehicle_trip_times[veh_id] = step 
+
+        arrived_vehicles = traci.simulation.getArrivedIDList()
+        for veh_id in arrived_vehicles:
+            if veh_id in vehicle_trip_times:
+                trip_time = step - vehicle_trip_times[veh_id]
+                completed_trip_times.append(trip_time)
+
 
         vehicle_ids = traci.vehicle.getIDList()
         for veh_id in vehicle_ids:
@@ -83,12 +99,15 @@ try:
             loss.backward()
             optimizer.step()
 
+
             print(f"Step {step}: Loss: {loss.item():.4f}")
             print(f"Phase Output: {phase_output.tolist()}")
             print(f"Duration Output: {[round(float(x), 2) for x in duration_output.tolist()]}")
 
         else:
             print(f"Step {step}: Skipping GNN forward pass (no data)")
-
+    if completed_trip_times:
+        avg_sum_time = sum(completed_trip_times)/len(completed_trip_times)
+        print(f"Average trip time: {avg_sum_time:.2f} seconds")
 finally:
     traci.close()
