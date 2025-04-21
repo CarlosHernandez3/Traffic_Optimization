@@ -84,6 +84,16 @@ try:
         if node_features.size(0) > 0 and edge_index.size(1) > 0:
             duration_output, phase_output = model(node_features, edge_index)
             gnn_output = (duration_output, phase_output)
+            tls_ids = traci.trafficlight.getIDList()
+
+            for i, jid in enumerate(junction_ids):
+                if jid in tls_ids:
+
+                    duration = float(duration_output[i].item())
+                    duration = max(5.0, min(duration, 120.0))
+
+                    traci.trafficlight.setPhase(jid, phase_output)
+                    traci.trafficlight.setPhaseDuration(jid, duration_output)
             print(f"Step {step}: GNN output:\n{gnn_output}")
             print(f"Step {step}: Waiting Times: {junction_waiting_time}")
         else:
