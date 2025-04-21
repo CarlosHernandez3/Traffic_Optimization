@@ -36,7 +36,8 @@ traci.start(sumo_cmd)
 
 input_dim = 4
 hidden_dim = 8
-output_dim = 2
+output_dim = 1
+
 model = GNN(input_dim, hidden_dim, output_dim)
 
 try:
@@ -81,8 +82,8 @@ try:
         # print(f"Step {step}: Traffic levels: {traffic_levels}"
         
         if node_features.size(0) > 0 and edge_index.size(1) > 0:
-
-            gnn_output = model(node_features, edge_index)
+            duration_output, phase_output = model(node_features, edge_index)
+            gnn_output = (duration_output, phase_output)
             print(f"Step {step}: GNN output:\n{gnn_output}")
             print(f"Step {step}: Waiting Times: {junction_waiting_time}")
         else:
